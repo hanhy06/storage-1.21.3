@@ -30,12 +30,10 @@ public class Storage implements ModInitializer {
 		ServerWorldEvents.LOAD.register(((minecraftServer, serverWorld) -> {
 			MinecraftClient client = MinecraftClient.getInstance();
  			worldName = client.getServer().getSavePath(WorldSavePath.ROOT).getParent().getFileName().toString();
-
-//			StorageDataSaveAndLoader.loadStorageData();
 		}));
 
 		ServerWorldEvents.UNLOAD.register(((minecraftServer, serverWorld) -> {
-			StorageDataSaveAndLoader.saveStorageData();
+			
 		}));
 
 		// /open 및 /storage 명령어 등록
