@@ -3,7 +3,7 @@ package com.hanhy06.storage;
 import com.hanhy06.storage.command.OpenStorage;
 import com.hanhy06.storage.command.SettingStorage;
 import com.hanhy06.storage.data.StorageData;
-import com.hanhy06.storage.data.StorageDataSaveAndLoader;
+import com.hanhy06.storage.data.StorageDataManager;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
@@ -30,10 +30,11 @@ public class Storage implements ModInitializer {
 		ServerWorldEvents.LOAD.register(((minecraftServer, serverWorld) -> {
 			MinecraftClient client = MinecraftClient.getInstance();
  			worldName = client.getServer().getSavePath(WorldSavePath.ROOT).getParent().getFileName().toString();
+
 		}));
 
 		ServerWorldEvents.UNLOAD.register(((minecraftServer, serverWorld) -> {
-			
+
 		}));
 
 		// /open 및 /storage 명령어 등록
