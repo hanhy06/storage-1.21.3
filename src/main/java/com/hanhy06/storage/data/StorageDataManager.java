@@ -38,18 +38,6 @@ public class StorageDataManager extends PersistentState {
         return nbt;
     }
 
-    @Override
-    public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
-        NbtList nbtList = new NbtList();
-
-        for(int i=0;i< Storage.storageDataList.size();i++){
-            nbtList.add(toNbt(Storage.storageDataList.get(i)));
-        }
-
-        nbt.put("StorageData",nbtList);
-        return nbt;
-    }
-
     public static StorageDataManager fromNbt(NbtCompound nbt){
         StorageDataManager manager = new StorageDataManager();
         NbtList nbtList = nbt.getList("StorageData", NbtElement.COMPOUND_TYPE);
@@ -79,5 +67,17 @@ public class StorageDataManager extends PersistentState {
         }
 
         return manager;
+    }
+
+    @Override
+    public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
+        NbtList nbtList = new NbtList();
+
+        for(int i=0;i< Storage.storageDataList.size();i++){
+            nbtList.add(toNbt(Storage.storageDataList.get(i)));
+        }
+
+        nbt.put("StorageData",nbtList);
+        return nbt;
     }
 }

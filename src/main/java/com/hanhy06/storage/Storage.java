@@ -23,18 +23,10 @@ public class Storage implements ModInitializer {
 
 	public static List<StorageData> storageDataList = new ArrayList<>();
 
-	public static String worldName;
-
 	@Override
 	public void onInitialize() {
 		ServerWorldEvents.LOAD.register(((minecraftServer, serverWorld) -> {
-			MinecraftClient client = MinecraftClient.getInstance();
- 			worldName = client.getServer().getSavePath(WorldSavePath.ROOT).getParent().getFileName().toString();
-
-		}));
-
-		ServerWorldEvents.UNLOAD.register(((minecraftServer, serverWorld) -> {
-
+			StorageDataManager manager = new StorageDataManager();
 		}));
 
 		// /open 및 /storage 명령어 등록
